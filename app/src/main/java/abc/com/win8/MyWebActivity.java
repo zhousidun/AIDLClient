@@ -50,8 +50,9 @@ public class MyWebActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public void showToast(String info){
+        public String showToast(String info){
             Toast.makeText(mContext, info, Toast.LENGTH_LONG).show();
+            return "Get info:"+info;
         }
     }
 }

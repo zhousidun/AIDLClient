@@ -4,10 +4,24 @@
     <title>My Android Html</title>
     <script>
         function callToast() {
-            ABCZFT.showToast('Html5 call android.');
+            window.Hybrid = window.Hybrid || {};
+            var tt = (new Date()).getTime();
+            var t = 'hybrid_' + tt;
+            var tmpFn;
+            tmpFn = serialNoCallback;
+            window.Hybrid[t] = function (data) {
+                tmpFn(data);
+                delete window.Hybrid[t];
+            }
+            var result = ABCZFT.showToast('Html5 call android.',t);
+            alert('android result:' + result);
         }
 
-        function testAlert(){
+        function serialNoCallback() {
+            alert('callback ok!');
+        }
+
+        function testAlert() {
             alert('Alert Test');
         }
     </script>
